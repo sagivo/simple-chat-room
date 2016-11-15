@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>welcome</title>
+</head>
+<body>
+  <h1><%= room.name %></h1>
+  <% if (!room.isFull) { %>
+    <p>
+      choose your name: <input type="text" name="name" id="name" /> <button id="connect">connect</button>
+    </p>
+    <p>in this room: <span id="inRoom"></span></p>
+    <p id="looking" style="display:none;">looking for partners...</p>
+  <% } else { %>
+    <p>room is full :(</p>
+  <% } %>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/simple-peer/6.0.7/simplepeer.min.js"></script>
+  <script src="js/room.js"></script>
+</body>
+</html>
