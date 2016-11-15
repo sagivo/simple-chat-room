@@ -1,0 +1,8 @@
+{
+  "name": "simple-chat-room",
+  "version": "0.0.1",
+  "description": "WebRTC simple chat room",
+  "dependencies": {
+    "express": "*",
+    "socket.io": "*"
+  }}
