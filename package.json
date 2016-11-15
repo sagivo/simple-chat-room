@@ -2,7 +2,19 @@
   "name": "simple-chat-room",
   "version": "0.0.1",
   "description": "WebRTC simple chat room",
+  "scripts": {
+    "start": "forever -l forever_log.txt index.js",
+    "stop": "forever stop index.js"
+  },
   "dependencies": {
     "express": "*",
-    "socket.io": "*"
-  }}
+    "socket.io": "*",
+    "ejs": "*",
+    "forever": "*"
+  },
+  "dependencies": {
+    "gulp": "*",
+    "gulp-supervisor": "*"
+  }
+
+}
