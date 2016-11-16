@@ -1,19 +1,36 @@
-const Person = require('./Person');
+const User = require('./User');
+const rooms = [];
 
 class Room {
+  static byName(roomName) {
+    let room = rooms[roomName];
+    if (!room) {
+      room = new Room(roomName);
+    }
+    return room;
+  }
+
   constructor(name) {
     this.name = name;
-    this.people = [];
+    this.users = {};
     this.max = 2;
   }
 
-  addPerson(person) {
-    if (!this.isFull) this.people.push(person);
+  addUser(user) {
+    if (this.isFull || this.users[user.name]) return false;
+    this.users[user.name] = user;
+    rooms[this.name] = this;
+    return true;
   }
 
-  get isFull() {
-    this.max >= this.people.length;
+  removeUser(user) {
+    delete this.users[user.name];
   }
+
+  get isFull(){
+    this.max >= this.users.length;
+  }
+
 }
 
 module.exports = Room;

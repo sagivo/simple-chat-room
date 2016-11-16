@@ -4,18 +4,26 @@
   <title>welcome</title>
 </head>
 <body>
-  <h1><%= room.name %></h1>
+  <h1 id="room"><%= room.name %></h1>
   <% if (!room.isFull) { %>
     <p>
-      choose your name: <input type="text" name="name" id="name" /> <button id="connect">connect</button>
+      choose your name: <input type="text" name="name" id="userName" /> <button id="connect">connect</button>
     </p>
-    <p>in this room: <span id="inRoom"></span></p>
+    <p>in this room:
+      <ul id="inRoom">
+      <% for (let userName of Object.keys(room.users)) { %>
+        <li><%= userName %></li>
+      <% } %>
+      </ul>
+    </p>
     <p id="looking" style="display:none;">looking for partners...</p>
+    <video id="video"></video>
   <% } else { %>
     <p>room is full :(</p>
   <% } %>
   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/simple-peer/6.0.7/simplepeer.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.5.1/socket.io.js"></script>
   <script src="js/room.js"></script>
 </body>
 </html>

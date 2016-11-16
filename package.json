@@ -4,15 +4,16 @@
   "description": "WebRTC simple chat room",
   "scripts": {
     "start": "forever -l forever_log.txt index.js",
-    "stop": "forever stop index.js"
+    "stop": "forever stop index.js",
+    "dev": "gulp"
   },
   "dependencies": {
-    "express": "*",
     "socket.io": "*",
-    "ejs": "*",
-    "forever": "*"
+    "express": "*",
+    "forever": "*",
+    "ejs": "*"
   },
-  "dependencies": {
+  "devDependencies": {
     "gulp": "*",
     "gulp-supervisor": "*"
   }
