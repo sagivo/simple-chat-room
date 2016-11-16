@@ -1,5 +1,5 @@
 const User = require('./User');
-const rooms = [];
+let rooms = [];
 
 class Room {
   static byName(roomName) {
@@ -10,25 +10,30 @@ class Room {
     return room;
   }
 
+  static reset() {
+    rooms = [];
+    console.log(rooms);
+  }
+
   constructor(name) {
     this.name = name;
-    this.users = {};
-    this.max = 2;
   }
 
   addUser(user) {
-    if (this.isFull || this.users[user.name]) return false;
-    this.users[user.name] = user;
+    if (this.isFull) return false;
+    if (this.u1) this.u2 = user;
+    else this.u1 = user;
     rooms[this.name] = this;
     return true;
   }
 
   removeUser(user) {
-    delete this.users[user.name];
+    if (this.u1 === user) this.u1 = null;
+    else this.u2 = null;
   }
 
   get isFull(){
-    this.max >= this.users.length;
+    return this.u2;
   }
 
 }
